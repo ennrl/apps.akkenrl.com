@@ -109,11 +109,11 @@
             document.querySelector(".content .eventsBox").innerHTML = ""
             data[n].forEach(i=>{
                 let html = "<div class='item'>"
-                html += "<div class='name'>" + i.name + "";
-                html += "<div class='time'>" + i.time + "";
-                html += "<div class='description'>" + i.description + "";
-                html += "<div class='end_time'>" + i.end_time + "";
-                html += "";
+                html += "<div class='name'>" + i.name + "</div>";
+                html += "<div class='time'>" + i.time + "</div>";
+                html += "<div class='description'>" + i.description + "</div>";
+                html += "<div class='end_time'>" + i.end_time + "</div>";
+                html += "</div>";
                 document.querySelector(".content .eventsBox").innerHTML += html
             })
         }
