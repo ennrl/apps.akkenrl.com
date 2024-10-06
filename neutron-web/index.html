@@ -19,7 +19,9 @@
 
             selectDay(document.querySelector(".content .calendar .item"), "i14")
 
-            document.querySelector(".content .helloMessage .hello").innerHTML = "&#1055;&#1088;&#1080;&#1074;&#1077;&#1090; <span>" + tg.initDataUnsafe.user.first_name + ""
+            let HelloMessage = "Доброе утро, "
+
+            document.querySelector(".content .helloMessage .hello").innerHTML = HelloMessage + "<span>" + tg.initDataUnsafe.user.first_name + ""
         })
     </script>
 </head>
@@ -91,6 +93,24 @@
     </div>
 
     <script>
+
+        const lab = (list=[]) => {
+            let html = ""
+            list.forEach(e=>{
+                html += e[0] + " - " + e[1] + "<br><br>"
+            })
+            return html
+        }
+
+        const event = (name="", description="", time="", end_time="") => {
+            return {
+                name:name,
+                description: description,
+                time: time,
+                end_time: end_time
+            }
+        }
+
         let data = {
             i14:[
                 {
@@ -147,7 +167,235 @@
                     time: "23:00",
                     end_time: ""
                 }
-            ]
+            ],
+            i15:[
+                {
+                    name: "Подъем, уборка и личная гигиена",
+                    description: "",
+                    time: "7:30",
+                    end_time: ""
+                },
+                {
+                    name: "Завтрак",
+                    description: "Столовая Технопарка",
+                    time: "8:00",
+                    end_time: ""
+                },
+                {
+                    name: "Производственная экскурсия на ОАО \"Белаз\"",
+                    description: "г. Жодино, ул. 40 лет Октября, 4",
+                    time: "10:00",
+                    end_time: "12:00"
+                },
+                {
+                    name: "Обед",
+                    description: "Столовая Технопарка",
+                    time: "13:00",
+                    end_time: ""
+                },
+                {
+                    name: "Занятия по образовательным направлениям",
+                    description: "\"Зеленая химия\" - БГТУ, ул. Свердлова, 13А<br><br>\"Виртуальная и дополненная реальность\" - БГТУ, ул. Свердлова, 13А<br><br>\"Энергетика будущего\" - Национальный детский технопарк, лаборатория \"Энергетика будущего\"",
+                    time: "14:00",
+                    end_time: "17:00"
+                },
+                {
+                    name: "План-час ДеньПРО#Театр",
+                    description: "Профильное место",
+                    time: "17:45",
+                    end_time: "18:15"
+                },
+                {
+                    name: "Ужин",
+                    description: "Столовая Технопарка",
+                    time: "18:30",
+                    end_time: ""
+                },
+                {
+                    name: "Спектакль Национального академического драматического театра имени Горького \"Пиковая дама\"",
+                    description: "Актовый зал Технодома",
+                    time: "19:00",
+                    end_time: "20:40"
+                },
+                {
+                    name: "Второй ужин",
+                    description: "Столовая Технопарка",
+                    time: "21:00",
+                    end_time: ""
+                },
+                {
+                    name: "Вечерний разговор",
+                    description: "Профильное место",
+                    time: "21:30",
+                    end_time: "22:00"
+                },
+                {
+                    name: "Отбой",
+                    description: "",
+                    time: "23:00",
+                    end_time: ""
+                }
+            ],
+            i16:[
+                {
+                    name: "Подъем, уборка и личная гиггена",
+                    description: "",
+                    time: "7:30",
+                    end_time: ""
+                },
+                {
+                    name: "Завтрак",
+                    description: "Столовая Технопарка",
+                    time: "8:00",
+                    end_time: ""
+                },
+                {
+                    name: "Посещение Олимпийского музея Национального олимпийского комитета Республики Беларусь",
+                    description: "ул. Радужная, 27-2",
+                    time: "10:00",
+                    end_time: "12:00"
+                },
+                {
+                    name: "Обед",
+                    description: "Столовая Технопарка",
+                    time: "13:00",
+                    end_time: ""
+                },
+                {
+                    name: "Занятия по образовательным направлениям",
+                    description: "\"Зеленая химия\" - БГУ (хим. фак.), ул. Ленинградская, 14<br><br>\"Виртуальная и дополненная реальность\" - Национальный детский технопарк, лаборатория \"Виртуальной и дополненной реальности\"<br><br>\"Энергетика будущего\" - БГТУ, уд. Свердлова, 13А",
+                    time: "14:00",
+                    end_time: "17:00"
+                },
+                {
+                    name: "План-час ДеньПРО#Право",
+                    description: "Профильное место",
+                    time: "17:45",
+                    end_time: "18:15"
+                },
+                {
+                    name: "Ужин",
+                    description: "Столовая Технопарка",
+                    time: "18:30",
+                    end_time: ""
+                },
+                {
+                    name: "Информационный проект \"Магиструм\"",
+                    description: "Актовый зал Технодома",
+                    time: "19:00",
+                    end_time: "20:00"
+                },
+                {
+                    name: "Спортивные мероприятия/Вечерняя прогулка",
+                    description: "Спортивный/тренажерный зал",
+                    time: "20:00",
+                    end_time: "21:00"
+                },
+                {
+                    name: "Второй ужин",
+                    description: "Столовая Технопарка",
+                    time: "21:00",
+                    end_time: ""
+                },
+                {
+                    name: "Вечерний разговор",
+                    description: "Профильное место",
+                    time: "21:30",
+                    end_time: "22:00"
+                },
+                {
+                    name: "Отбой",
+                    description: "",
+                    time: "23:00",
+                    end_time: ""
+                }
+            ],
+            i17:[
+                event(
+                    name=        "Подъем, уборка и личная гигена",
+                    description= "",
+                    time=        "7:30",
+                    end_time=    ""
+                ),
+                event(
+                    name=        "Завтрак",
+                    description= "Столовая Технопарка",
+                    time=        "8:00",
+                    end_time=    "",
+                ),
+                event(
+                    name=        "Производственная экскурсия на фабрику \"Коммунарка\"",
+                    description= "ул. Аранская, 18",
+                    time=        "10:00",
+                    end_time=    "12:00",
+                ),
+                event(
+                    name=        "Обед",
+                    description= "Столовая Технопарка",
+                    time=        "13:00",
+                    end_time=    "",
+                ),
+                event(
+                    name=        "Занятия по образовательным направлениям:",
+                    description= lab([
+                        ["Зеленая химия", "БГТУ, ул. Свердлова, 13А"],
+                        ["Виртульная и дополненная реальность", "Национальный детский технопарк, лаборатория \"Виртуальная и дополненная реальность\""],
+                        ["Энергетика будущего", "БГТУ, ул. Свердлова, 13А"]
+                    ]),
+                    time=        "14:00",
+                    end_time=    "17:00"
+                ),
+                event(
+                    name=        "План-час ДеньПРО#Любовь",
+                    description= "Профильное место",
+                    time=        "17:45",
+                    end_time=    "18:15",
+                ),
+                event(
+                    name=        "Ужин",
+                    description= "Столовая Технопарка",
+                    time=        "18:30",
+                    end_time=    "",
+                ),
+                event(
+                    name=        "Музыкальный вечер \"В кругу друзей\"",
+                    description= "Актовый зал Технодома",
+                    time=        "19:00",
+                    end_time=    "20:00",
+                ),
+                event(
+                    name=        "Спортивные мероприятия/вечерняя прогулка",
+                    description= "Спортивный/тренажерный зал",
+                    time=        "20:00",
+                    end_time=    "21:00",
+                ),
+                event(
+                    name=        "Второй ужин",
+                    description= "Столовая Технопарка",
+                    time=        "21:00",
+                    end_time=    "21:30",
+                ),
+                event(
+                    name=        "Вечерний разговор",
+                    description= "Профильное место",
+                    time=        "21:30",
+                    end_time=    "22:00",
+                ),
+                event(
+                    name=        "Отбой",
+                    description= "",
+                    time=        "23:00",
+                    end_time=    "",
+                )
+            ],
+            i18:[],
+            i19:[],
+            i20:[],
+            i21:[],
+            i22:[],
+            i23:[],
+            i24:[],
+            i25:[]
         }
 
         const selectDay = (e, n) => {
@@ -158,9 +406,10 @@
             data[n].forEach(i=>{
                 let html = "<div class='item'>"
                 html += "<div class='name'>" + i.name + "</div>";
-                html += "<div class='time'>" + i.time + "</div>";
+                html += "<div class='time'>" + i.time + "";
+                html += "<div class='end_time'>" + i.end_time + "</div></div>";
                 html += "<div class='description'>" + i.description + "</div>";
-                html += "<div class='end_time'>" + i.end_time + "</div>";
+                
                 html += "</div>";
                 document.querySelector(".content .eventsBox").innerHTML += html
             })

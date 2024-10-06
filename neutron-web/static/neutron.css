@@ -96,15 +96,18 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.15);
     display: grid;
     grid-template-columns: 0.8fr 0.2fr;
+    grid-template-areas: "name time" "description time";
 }
 .content .eventsBox .item .name {
     font-size: 18px;
     font-weight: 600;
+    grid-area: name;
 }
 .content .eventsBox .item .time {
     font-size: 18px;
     font-weight: 600;
     text-align: right;
+    grid-area: time;
 }
 .content .eventsBox .item .end_time {
     font-size: 14px;
@@ -116,6 +119,7 @@ body {
 .content .eventsBox .item .description {
     font-size: 14px;
     opacity: 0.5;
+    grid-area: description;
     margin-top: 5px;
 }
 .copyright {
