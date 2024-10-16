@@ -17,7 +17,11 @@
             tg.setBottomBarColor("rgb(28, 28, 30)")
             tg.setHeaderColor("rgb(28, 28, 30)")
 
-            selectDay(document.querySelector(".content .calendar .item"), "i14")
+            let dt = new Date;
+
+            let clss = ".content .calendar .item.i" + dt.getDate()
+
+            selectDay(document.querySelector(clss), "i" + dt.getDate())
 
             let HelloMessage = "Доброе утро, "
 
@@ -43,55 +47,55 @@
         <div class="helloMessage">
             <div class="logo"></div>
             <div class="hello">&#1055;&#1088;&#1080;&#1074;&#1077;&#1090; </div>
-            <div class="last_change" style="font-size: 12px; opacity: 0.5; margin-top: 5px;">Последнее изменение: 16 Oct. 2024 23:30</div>
+            <div class="last_change" style="font-size: 12px; opacity: 0.5; margin-top: 5px;">Последнее изменение: 16 Oct. 2024 23:30<br>* Обновление ядра</div>
         </div>
 
         <div class="calendar">
-            <div class="item" onclick="selectDay(this, 'i14')">
+            <div class="item i14" onclick="selectDay(this, 'i14')">
                 <div class="weekday">&#1055;&#1053;</div>
                 <div class="day">14</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i15')">
+            <div class="item i15" onclick="selectDay(this, 'i15')">
                 <div class="weekday">&#1042;&#1058;</div>
                 <div class="day">15</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i16')">
+            <div class="item i16" onclick="selectDay(this, 'i16')">
                 <div class="weekday">&#1057;&#1056;</div>
                 <div class="day">16</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i17')">
+            <div class="item i17" onclick="selectDay(this, 'i17')">
                 <div class="weekday">&#1063;&#1058;</div>
                 <div class="day">17</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i18')">
+            <div class="item i18" onclick="selectDay(this, 'i18')">
                 <div class="weekday">&#1055;&#1058;</div>
                 <div class="day">18</div>
             </div>
-            <div class="item colored" onclick="selectDay(this, 'i19')">
+            <div class="item i19 colored" onclick="selectDay(this, 'i19')">
                 <div class="weekday">&#1057;&#1041;</div>
                 <div class="day">19</div>
             </div>
-            <div class="item colored" onclick="selectDay(this, 'i20')">
+            <div class="item i20 colored" onclick="selectDay(this, 'i20')">
                 <div class="weekday">&#1042;&#1057;</div>
                 <div class="day">20</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i21')">
+            <div class="item i21" onclick="selectDay(this, 'i21')">
                 <div class="weekday">&#1055;&#1053;</div>
                 <div class="day">21</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i22')">
+            <div class="item i22" onclick="selectDay(this, 'i22')">
                 <div class="weekday">&#1042;&#1058;</div>
                 <div class="day">22</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i23')">
+            <div class="item i23" onclick="selectDay(this, 'i23')">
                 <div class="weekday">&#1057;&#1056;</div>
                 <div class="day">23</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i24')">
+            <div class="item i24" onclick="selectDay(this, 'i24')">
                 <div class="weekday">&#1063;&#1058;</div>
                 <div class="day">24</div>
             </div>
-            <div class="item" onclick="selectDay(this, 'i25')">
+            <div class="item i25" onclick="selectDay(this, 'i25')">
                 <div class="weekday">&#1055;&#1058;</div>
                 <div class="day">25</div>
             </div>
@@ -1002,6 +1006,7 @@
         const selectDay = (e, n) => {
             let b = document.querySelectorAll(".content .calendar .item");
             b.forEach(i=>{i.classList.remove("selected")})
+            console.log(e, n)
             e.classList.add("selected")
             document.querySelector(".content .eventsBox").innerHTML = ""
             data[n].forEach(i=>{
@@ -1023,4 +1028,3 @@
     </script>
 </body>
 </html>
-<!-- Powered by Staatic (https://staatic.com/) -->
