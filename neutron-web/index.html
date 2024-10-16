@@ -26,7 +26,10 @@
             let HelloMessage = "Доброе утро, "
 
             let d = new Date;
-            if (d.getHours() >= 0) {
+            if (d.getHours >= 23 || d.getHours() >= 0) {
+                HelloMessage = "Доброй ночи, "
+            }
+            if (d.getHours() >= 6) {
                 HelloMessage = "Доброе утро, "
             }
             if (d.getHours() >= 12) {
