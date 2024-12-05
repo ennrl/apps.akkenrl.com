@@ -117,19 +117,19 @@
             // Очистка canvas
             if (app.file != null) {
                 ctx.fillStyle = "#000";
-                ctx.fillRect(0, 0, 1280, 720);
-                ctx.drawImage(app.file, 0, 0, 1280, 720)
+                ctx.fillRect(0, 0, 1280, 1280/4*3);
+                ctx.drawImage(app.file, 0, 0, 1280, 1280/4*3)
             } else {
                 ctx.fillStyle = "#000";
-                ctx.fillRect(0, 0, 1280, 720);
+                ctx.fillRect(0, 0, 1280, 1280/4*3);
             }
             
 
             // Градиент
             let color = [0, 122, 255];
-            for (let y = 420; y < 720; y++) {
-                let i = y - 420;
-                let alpha = 1 / 300 * i
+            for (let y = 550; y < 1280/4*3; y++) {
+                let i = y - 550;
+                let alpha = 1 / 620 * i
                 ctx.fillStyle = "rgba(0, 122, 255, " + alpha +")"
                 ctx.fillRect(0, y, 1280, 1)
             }
@@ -141,7 +141,7 @@
             let len1 = app.text.length;
             let counter = 0
             app.text.forEach(element => {
-                let y = 720 - 70 - (counter*50);
+                let y = 1280/4*3 - 70 - (counter*50);
                 counter += 1
                 ctx.fillText(element, 50, y, 1180)
             });
@@ -151,7 +151,7 @@
         window.addEventListener("DOMContentLoaded", ()=>{
             const canvas = document.querySelector("#canva");
             canvas.width = 1280;
-            canvas.height = 720;
+            canvas.height = 1280/4*3;
             const ctx = canvas.getContext("2d");
             app.ctx = ctx
             setInterval(()=>{__updater(ctx)}, 1000/30)
