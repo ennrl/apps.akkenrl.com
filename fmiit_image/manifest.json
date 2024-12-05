@@ -1,0 +1,10 @@
+{
+    "name": "FMiIT App",
+    "short_name": "fmiit",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "display": "minimal-ui",
+    "orientation": "portrait",
+    "scope": "https://apps.akkenrl.com/fmiit_image/",
+    "start_url": "https://apps.akkenrl.com/fmiit_image/"
+  }

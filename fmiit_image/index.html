@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>FMiIT Image App</title>
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: black;
+            background-size: cover;
+            color: white;
+            font-family: "Open Sans";
+        }
+        .header .logo {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            color: greenyellow;
+            font-family: "Dela Gothic One", sans-serif;
+            letter-spacing: 0.6px;
+        }
+        .header .pre {
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        .text {
+            padding: 20px;
+            font-size: 14px;
+            padding-bottom: 0px;
+        }
+        #canva {
+            width: calc(100vw - 40px);
+            background-color: rgb(28, 28, 30);
+            margin-left: 20px;
+            border-radius: 15px;
+            outline: 1px solid greenyellow
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            outline: 1px solid greenyellow;
+            border-radius: 15px;
+            border: 0;
+            background: rgb(28, 28, 30);
+            color: white;
+            min-height: 120px;
+            font-family: "Open Sans";
+        }
+        .buttonBox .btn {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: black;
+            background-color: greenyellow;
+        }
+        .buttonBox {
+            display: flex;
+            margin-top: 10px;
+            flex-direction: row;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">FMiIT Image App</div>
+        <div class="pre">Designed and development by енрл.</div>
+    </div>
+    <canvas id="canva"></canvas>
+    <div class="text">
+        Выберите фотографию:
+        <input type="file">
+        <br><br>
+        <textarea>Введите текст,
+И он будет отображаться
+В предпросмотре</textarea>
+    
+        <div class="buttonBox">
+            <div class="btn" onclick="__download_image()">Скачать</div>
+        </div>
+</div>
+
+
+    <script>
+        window.app = {}
+        app.file = null;
+        app.text = null;
+        const image = document.querySelector("input[type='file']")
+        image.addEventListener("change", (e)=>{
+            const img = new Image;
+            img.src = URL.createObjectURL(e.target.files[0]);
+            img.onload = () => {
+                app.file = img;
+            }
+        })
+
+        const __download_image = () => {
+            var link = document.createElement('a');
+            let dt = new Date;
+            link.download = 'fmiit_preview_' + dt.getTime() +'.png';
+            link.href = document.getElementById('canva').toDataURL()
+            link.click();
+        }
+
+        const __updater = (ctx) => {
+            // Обновление переменной текста:
+            app.text = document.querySelector("textarea").value;
+            
+            // Очистка canvas
+            if (app.file != null) {
+                ctx.fillStyle = "#000";
+                ctx.fillRect(0, 0, 1280, 720);
+                ctx.drawImage(app.file, 0, 0, 1280, 720)
+            } else {
+                ctx.fillStyle = "#000";
+                ctx.fillRect(0, 0, 1280, 720);
+            }
+            
+
+            // Градиент
+            let color = [0, 122, 255];
+            for (let y = 420; y < 720; y++) {
+                let i = y - 420;
+                let alpha = 1 / 300 * i
+                ctx.fillStyle = "rgba(0, 122, 255, " + alpha +")"
+                ctx.fillRect(0, y, 1280, 1)
+            }
+
+            // Отрисовка текста
+            ctx.fillStyle = "white"
+            ctx.font = "48px Dela Gothic One"
+            app.text = app.text.split("\n").reverse()
+            let len1 = app.text.length;
+            let counter = 0
+            app.text.forEach(element => {
+                let y = 720 - 70 - (counter*50);
+                counter += 1
+                ctx.fillText(element, 50, y, 1180)
+            });
+        }
+
+
+        window.addEventListener("DOMContentLoaded", ()=>{
+            const canvas = document.querySelector("#canva");
+            canvas.width = 1280;
+            canvas.height = 720;
+            const ctx = canvas.getContext("2d");
+            app.ctx = ctx
+            setInterval(()=>{__updater(ctx)}, 1000/30)
+        })
+    </script>
+</body>
+</html>
